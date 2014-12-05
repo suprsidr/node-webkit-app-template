@@ -1,0 +1,126 @@
+// We need to reset box-sizing before normalize
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+  
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+
+@import "normalize",
+  "foundation/settings";
+  
+@import "foundation";
+
+// Or selectively include components
+// @import
+//  "foundation/components/grid",
+//  "foundation/components/ie8-grid",
+//  "foundation/components/accordion",
+//  "foundation/components/alert-boxes",
+//  "foundation/components/block-grid",
+//  "foundation/components/breadcrumbs",
+//  "foundation/components/button-groups",
+//  "foundation/components/buttons",
+//  "foundation/components/clearing",
+//  "foundation/components/dropdown",
+//  "foundation/components/dropdown-buttons",
+//  "foundation/components/flex-video",
+//  "foundation/components/forms",
+//  "foundation/components/icon-bar",
+//  "foundation/components/inline-lists",
+//  "foundation/components/joyride",
+//  "foundation/components/keystrokes",
+//  "foundation/components/labels",
+//  "foundation/components/magellan",
+//  "foundation/components/orbit",
+//  "foundation/components/pagination",
+//  "foundation/components/panels",
+//  "foundation/components/pricing-tables",
+//  "foundation/components/progress-bars",
+//  "foundation/components/range-slider",
+//  "foundation/components/reveal",
+//  "foundation/components/side-nav",
+//  "foundation/components/split-buttons",
+//  "foundation/components/sub-nav",
+//  "foundation/components/switches",
+//  "foundation/components/tables",
+//  "foundation/components/tabs",
+//  "foundation/components/thumbs",
+//  "foundation/components/tooltips",
+//  "foundation/components/top-bar",
+//  "foundation/components/type",
+//  "foundation/components/offcanvas",
+//  "foundation/components/visibility";
+
+//  "fancybox"
+
+html, body {
+  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+// My example of a fixed off-canvas-menu
+
+.left-off-canvas-menu {
+  -webkit-transition: -webkit-#{$menu-slide};
+  -moz-transition: -moz-#{$menu-slide};
+  -ms-transition: -ms-#{$menu-slide};
+  -o-transition: -o-#{$menu-slide};
+  transition: #{$menu-slide};
+  position: fixed;
+  top: 0;
+}
+
+// I like the toggle to stay put too
+.left-off-canvas-toggle {
+  color: white;
+  display: block;
+  height: 2.5rem;
+  padding: 0;
+  position: fixed;
+  left: 1em;
+  text-indent: -9999px;
+  top: 1em;
+  -webkit-transform: translateZ(0);
+  transform: translate3d(0px, 0px, 0px);
+  width: 2.5rem;
+  z-index: 100;
+  span {
+    &:after {
+      box-shadow: 0 10px 0 1px $primary-color, 0 16px 0 1px $primary-color, 0 22px 0 1px $primary-color;
+      content: "";
+      display: block;
+      height: 0;
+      left: 0.80556rem;
+      margin-top: -0.44444rem;
+      position: absolute;
+      top: 50%;
+      width: 0.88889rem;
+    }
+  }
+}
+
+.off-canvas-wrap.move-right {
+  // default behavior is to set height to 100% which makes the page jump to top. Stop it!
+  height: auto;
+}
+
+.move-right {
+  > .left-off-canvas-menu {
+    @include translate3d(0%,0,0);
+  }
+}
+
+
+// Opera 12.16 and IE9 - don't have 3d transforms
+.csstransforms.no-csstransforms3d {
+  .move-right > .left-off-canvas-menu { @include translate2d(0%, 0); }
+}
+
+// Older browsers
+.no-csstransforms {
+  .move-right > .left-off-canvas-menu {left: 0;}
+}
+
+// end my fixed off-canvas-menu example

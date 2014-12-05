@@ -1,0 +1,14 @@
+{
+  "name": "My Cool APP",
+  "main": "./html/index.html",
+  "description": "Do something cool.",
+  "repository": "n/a",
+  "window": {
+    "title": "My Cool APP",
+    "icon": "./img/app.png",
+    "width": 900,
+    "height": 600,
+    "frame": true,
+    "toolbar": false
+  }
+}
